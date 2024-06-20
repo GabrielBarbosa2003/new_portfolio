@@ -1,0 +1,13 @@
+.menu-container{
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.75rem;
+    pointer-events: all;
+    width: 100%;
+}
+
+.rigth-menu{
+    display: flex;
+    gap: 1rem;
+}
