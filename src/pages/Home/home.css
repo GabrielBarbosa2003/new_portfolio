@@ -1,8 +1,7 @@
 .home-container {
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
-    
+    overflow: hidden;    
 }
 
 .hero-copy {
@@ -52,4 +51,46 @@
     bottom: 10%;
     left: 50%;
     transform: translate(-50%, 0%);
+  }
+
+  @media(max-width: 1400px) {
+  
+  }
+
+  @media(max-width: 1200px) {
+    .hero-copy-wrapper:nth-child(1) h1 {
+      font-size: 30px;
+    }
+    
+    .hero-copy-wrapper:nth-child(2) h1 {
+      font-size: 100px;
+    }
+  
+  }
+  @media(max-width: 991px) {}
+  
+  @media(max-width: 768px) {
+    .hero-copy-wrapper:nth-child(1) h1 {
+      font-size: 20px;
+    }
+    
+    .hero-copy-wrapper:nth-child(2) h1 {
+      font-size: 80px;
+    }
+  }
+  
+  @media(max-width: 600px) {}
+  
+  @media(max-width: 480px) {
+    .hero-copy-wrapper:nth-child(2) h1 {
+      font-size: 50px;
+    }
+    .hero-img{
+      width: 300px;
+      height: 450px;
+    
+    }
+    .home-container{
+      border: 2px red solid;
+    }
   }

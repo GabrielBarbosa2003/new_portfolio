@@ -15,7 +15,6 @@ export default function Menu() {
         { path: "/contact", label: "Contact" }
     ];
 
-    const container = useRef()
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const tl = useRef();
 
@@ -27,7 +26,7 @@ export default function Menu() {
 
 
     useGSAP(() => {
-        gsap.set(".menu-link-item-holder", {y:75})
+        gsap.set(".menu-link-item-holder", {y:85})
         tl.current = gsap
         .timeline({paused: true})
         .to(".menu-overlay", {
@@ -96,7 +95,7 @@ export default function Menu() {
                         {menuLinks.map((link, index) => (
                             <div key={index} className="menu-link-item">
                                 <div className="menu-link-item-holder" onClick={verificaMenu}>
-                                    <Link className="menu-link" href={link.path}>
+                                    <Link className="menu-link" to={link.path}>
                                         {link.label}
                                     </Link>
                                 </div>
@@ -114,7 +113,7 @@ export default function Menu() {
                             <a href="#">Dribbble &#8599;</a>
                         </div>
                         <div className="menu-info-col">
-                            <p>info@codegrid.com</p>
+                            <p>gabrieldecarvalhu@gmail.com</p>
                             <p>0923 3984 23</p>
                         </div>
                     </div>
