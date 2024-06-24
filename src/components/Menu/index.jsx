@@ -106,23 +106,20 @@ export default function Menu() {
 
                     <div className="menu-info">
                         <div className="menu-info-col">
-                            <a href="#">X &#8599;</a>
-                            <a href="#">Instagram &#8599;</a>
-                            <a href="#">LinkedIn &#8599;</a>
-                            <a href="#">Behance &#8599;</a>
-                            <a href="#">Dribbble &#8599;</a>
+                            <a href="https://www.instagram.com/gabriellbarbosa/" target="_blank">Instagram &#8599;</a>
+                            <a href="https://www.linkedin.com/in/devgabrielbarbosa/" target="_blank">LinkedIn &#8599;</a>
                         </div>
                         <div className="menu-info-col">
                             <p>gabrieldecarvalhu@gmail.com</p>
-                            <p>0923 3984 23</p>
+                            <p>(19)99483-3584</p>
                         </div>
                     </div>
                 </div>
                 <div className="menu-preview">
-                    <p>View ShowReel</p>
+                    <p>PT-BR</p>
                 </div>
 
-            </div >
+            </div>
 
 
 

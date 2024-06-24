@@ -11,6 +11,9 @@
   display: flex;
   gap: 1rem;
 }
+.menu{
+  cursor: pointer;
+}
 
 .menu-bar,
 .menu-overlay-bar {
@@ -58,6 +61,9 @@
   -webkit-text-stroke: 3px;
   line-height: 70%;
 }
+.menu-close{
+  cursor: pointer;
+}
 
 .menu-close-icon {
   flex: 2;
@@ -94,7 +100,7 @@
 }
 
 @media(max-width: 1200px) {
-  
+
 }
 
 @media(max-width: 991px) {}
