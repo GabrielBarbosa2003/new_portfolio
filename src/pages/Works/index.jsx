@@ -1,10 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import './works.css'
 import gsap from 'gsap';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/grid';
+import { Navigation, Grid } from 'swiper/modules'
+
 export default function Works() {
+
   var currentIndex = 1;
   var totalSlides = 7;
+
   const atualizaSlideAtivo = () => {
     document.querySelectorAll(".title").forEach((el, index) => {
       if (index === currentIndex) {
@@ -15,7 +23,6 @@ export default function Works() {
     })
 
   }
-
   const handleSlider = () => {
     if (currentIndex < totalSlides) {
       currentIndex++;
@@ -26,78 +33,64 @@ export default function Works() {
     gsap.to(".slide-titles", {
       onStart: () => {
         setTimeout(() => {
-          atualizaSlideAtivo(currentIndex + 1)
-        }, 100)
+          atualizaSlideAtivo();
+        }, 100);
+
+        updateImages(currentIndex + 1);
       },
       x: `-${(currentIndex - 1) * 11.1111}%`,
       duration: 2,
       ease: "power4.out",
-    })
-  }
-
-  const updateImages = (imageNumber) => {
-    const srcImg = `../../assets/img/works/${imageNumber}.jpg`;
-    const imgTop = document.createElement("img");
-    const imgBottom = document.createElement("img");
-
-    imgTop.src = imgSrc;
-    imgBottom.src = imgSrc;
-
-
-    imgTop.style.clipPath = "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)";
-    imgBottom.style.clipPath = "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)";
-    imgTop.style.transform = "scale(2)";
-    imgBottom.style.transform = "scale(2)";
-
-    document.querySelector(".img-top").appendChild(imgTop);
-    document.querySelector(".img-bottom").appendChild(imgBottom);
-
-    gsap.to([imgTop, imgBottom], {
-      clipPath: "polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%)",
-      transform: "scale(1)",
-      duration: 2,
-      ease: "power4.out",
-      stagger: 0.15,
-      onComplete: trimExcessImages,
     });
-
-  }
-
-  const trimExcessImages = () => {
-    const selectors = [".img-top", ".img-bottom"];
-
-    selectors.forEach((selectors) => {
-      const container = document.querySelector(selector);
-      const images = Array.from(container.querySelectorAll("img"));
-      const excessCount = images.length - 5;
-
-      if (excessCount > 0) {
-        images
-          .slice(0, excessCount)
-          .forEach((image) => container.removeChild(image));
-      }
-    })
-  }
+  };
 
   useEffect(() => {
-    document.addEventListener("click", handleSlider);
+    //document.addEventListener("click", handleSlider);
 
+    //updateImages(2);
+    atualizaSlideAtivo();
   })
+
+  const titulos = [
+    { title: "Arcadian Complex", id: 1 },
+    { title: "Shadowline Spire", id: 2 },
+    { title: "Echo Nexus Habitat", id: 3 },
+    { title: "Cascade Enclave", id: 4 },
+    { title: "Arcadian Complex", id: 5 },
+    { title: "Shadowline Spire", id: 6 },
+    { title: "Echo Nexus Habitat", id: 7 },
+    { title: "Cascade Enclave", id: 8 },
+    { title: "Echo Nexus Habitat", id: 9 }
+  ]
+
+
   return (
     <div className='container-slides'>
       <div className='slider' >
+
         <div className='slide-titles'>
-          <div class="title">
-            <h1>Neo Forge Towers</h1>
-          </div>
-          <div class="title"><h1>Arcadian Complex</h1></div>
-          <div class="title"><h1>Shadowline Spire</h1></div>
-          <div class="title"><h1>Echo Nexus Habitat</h1></div>
-          <div class="title"><h1>Cascade Enclave</h1></div>
-          <div class="title"><h1>Prism Sector</h1></div>
-          <div class="title"><h1>Iron Eden Colony</h1></div>
-          <div class="title"><h1>Neo Forge Towers</h1></div>
-          <div class="title"><h1>Arcadian Complex</h1></div>
+          <Swiper
+            navigation={false}
+            modules={[Navigation, Grid]}
+            slidesPerView={3}
+            loop={true}
+            spaceBetween={20}
+            className="image"
+            >
+
+
+            {titulos.map((titulo) => (
+              <SwiperSlide key={titulo.id}>
+                <div className="title">
+
+                  <h1>{titulo.title}</h1>
+
+                </div>
+              </SwiperSlide>
+            ))}
+
+          </Swiper>
+
         </div>
         <div className='slide-images'>
           <div className='img-top'></div>
