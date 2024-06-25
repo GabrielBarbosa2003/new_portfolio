@@ -2,6 +2,9 @@ import React from 'react'
 import './works.css'
 
 export default function Works() {
+  const atualizaSlideAtivo = () => {
+    
+  }
   return (
     <div className='container-slides'>
       <div className='slider' >
@@ -19,6 +22,8 @@ export default function Works() {
           <div class="title"><h1>Arcadian Complex</h1></div>
         </div>
         <div className='slide-images'>
+          <div className='img-top'></div>
+          <div className='img-bottom'></div>
 
         </div>
       </div>

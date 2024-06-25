@@ -40,4 +40,32 @@
     color: rgba(255, 255, 255, 0.2);
     transition: color 0.25s ease, opacity 0.25s ease;
   }
+  .active h1 {
+    color: #fff;
+  }
+
+  .img-top {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(85% 0%, 0% 0%, 0% 50%, 85% 50%);
+    transition: clip-path 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  
+  .img-bottom {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(100% 50%, 15% 50%, 15% 100%, 100% 100%);
+    transition: clip-path 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  
+  .slide-images:hover .img-top {
+    clip-path: polygon(90% 0%, 10% 0%, 10% 50%, 90% 50%);
+  }
+  
+  .slide-images:hover .img-bottom {
+    clip-path: polygon(90% 50%, 10% 50%, 10% 100%, 90% 100%);
+  }
+  
   
