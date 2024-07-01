@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './works.css'
 import gsap from 'gsap';
 
@@ -44,12 +44,12 @@ export default function Works() {
     });
   };
 
-  useEffect(() => {
-    //document.addEventListener("click", handleSlider);
+  // useEffect(() => {
+  //   document.addEventListener("click", handleSlider);
 
-    //updateImages(2);
-    atualizaSlideAtivo();
-  })
+  //   updateImages(2);
+  //   atualizaSlideAtivo();
+  // })
 
   const titulos = [
     { title: "Arcadian Complex", id: 1 },
@@ -63,6 +63,15 @@ export default function Works() {
     { title: "Echo Nexus Habitat", id: 9 }
   ]
 
+  const [currentSlideId, setCurrentSlideId] = useState(null);
+
+  const handleSlideChange = (swiper) => {
+    const currentIndex = swiper.activeIndex;
+    const currentSlide = swiper.slides[currentIndex];
+    const currentId = currentSlide.getAttribute('data-id');
+    setCurrentSlideId(currentId);
+  };
+
 
   return (
     <div className='container-slides'>
@@ -74,20 +83,20 @@ export default function Works() {
             modules={[Navigation, Grid]}
             slidesPerView={3}
             loop={true}
-            spaceBetween={20}
-            className="image"
+            spaceBetween={10}
+            onSlideChange={handleSlideChange}
             >
 
-
-            {titulos.map((titulo) => (
-              <SwiperSlide key={titulo.id}>
-                <div className="title">
-
-                  <h1>{titulo.title}</h1>
-
+            {titulos.map((titulo,index) => (
+              <SwiperSlide key={titulo.id} data-id={titulo.id}>
+                <div className={index == currentSlideId ? "title_active" : "title"} >
+                  <h1>{titulo.id}</h1>
                 </div>
               </SwiperSlide>
-            ))}
+              
+              
+              
+            )) }
 
           </Swiper>
 

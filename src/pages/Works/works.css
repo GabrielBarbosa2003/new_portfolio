@@ -29,6 +29,22 @@
     align-items: center;
 
   }
+  .title_active {
+    width: 100%;
+    max-width: 550px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .title_active h1{
+    text-align: center;
+    font-size: 28px;
+    font-weight: 400;
+    color: white;
+
+  }
   
   .title h1 {
     text-align: center;
@@ -37,6 +53,7 @@
     color: rgba(255, 255, 255, 0.2);
     transition: color 0.25s ease, opacity 0.25s ease;
   }
+
   .active h1 {
     color: #fff;
   }
