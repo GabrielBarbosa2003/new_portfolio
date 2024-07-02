@@ -38,39 +38,76 @@ export default function Works() {
   const imageWorks = {
     0: img1,
     1: img2,
-    2: img3
+    2: img3,
+    3: img1,
+    4: img2,
+    5: img3,
+
   }
 
-  const updateImages = (imageNumber) => {
-    const imgSrc = imageWorks[imageNumber]
-    const imgTop = document.createElement("img");
-    const imgBottom = document.createElement("img");
+  const [refTop, setRefTop] = useState(null)
+  const [refBot, setRefBot] = useState(null)
+
+  const imgRefTop = useRef(0);
+  const imgRefBot = useRef(0);
+  
 
 
-    imgTop.src = imageWorks[imageNumber];
-    imgBottom.src = imageWorks[imageNumber];
-    console.log(imageNumber)
+  useEffect(() => {
+      const imgSrc = imageWorks[currentSlideId]
+      const imgTop = document.createElement("img");
+      const imgBottom = document.createElement("img");
+  
+  
+      // imgRefTop.current.src = imageWorks[imageNumber];
+      // imgRefBot.current.src = imageWorks[imageNumber];
+      imgTop.src = imgSrc;
+      imgBottom.src = imgSrc;
+  
+  
+  
+  
+  
+  
+      imgTop.style.clipPath = "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)";
+      imgBottom.style.clipPath = "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)";
+      imgTop.style.transform = "scale(2)";
+      imgBottom.style.transform = "scale(2)";
 
+      if(imgRefTop.current){
+        imgRefTop.current.innerHTML = '';
+        imgRefBot.current.innerHTML = '';
+
+      }
+  
+  
+      document.querySelector(".img-top").appendChild(imgTop);
+      document.querySelector(".img-bottom").appendChild(imgBottom);
+  
+      console.log(imgRefTop.current)
+  
+      // imgRefTop.current.appendChild(imgTop);
+      // imgBottom.current.appendChild(imgBottom);
+  
+      setRefTop(imgTop);
+      setRefBot(imgBottom);
+  
+  
+      gsap.to([imgTop, imgBottom], {
+        clipPath: "polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%)",
+        transform: "scale(1)",
+        duration: 2,
+        ease: "power4.out",
+        stagger: 0.15,
+        //onComplete: trimExcessImages,
+      });
     
 
+  },[currentSlideId])
 
-    imgTop.style.clipPath = "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)";
-    imgBottom.style.clipPath = "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)";
-    imgTop.style.transform = "scale(2)";
-    imgBottom.style.transform = "scale(2)";
+  
 
-    document.querySelector(".img-top").appendChild(imgTop);
-    document.querySelector(".img-bottom").appendChild(imgBottom);
 
-    gsap.to([imgTop, imgBottom], {
-      clipPath: "polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%)",
-      transform: "scale(1)",
-      duration: 2,
-      ease: "power4.out",
-      stagger: 0.15,
-      //onComplete: trimExcessImages,
-    });
-  };
 
 
   function trimExcessImages() {
@@ -103,8 +140,9 @@ export default function Works() {
             loop={true}
             spaceBetween={10}
             onSlideChange={(swiper) => {
+              
               handleSlideChange(swiper);
-              updateImages(currentSlideId)
+              //updateImages(currentSlideId)
             }}
           >
 
@@ -123,17 +161,19 @@ export default function Works() {
 
         </div>
 
-      </div>
-      <div className='slide-images'>
-        <div className='img-top'>
-          {/* <img src={imageWorks[currentSlideId]} alt='' /> */}
+        <div className='slide-images'>
+          <div className='img-top' ref={imgRefTop} >
+            
+          </div>
+
+          <div className='img-bottom' ref={imgRefBot}>
+            
+          </div>
+
         </div>
 
-        <div className='img-bottom'>
-          {/* <img src={imageWorks[currentSlideId]} alt='' /> */}
-        </div>
-
       </div>
+
 
     </div>
 
