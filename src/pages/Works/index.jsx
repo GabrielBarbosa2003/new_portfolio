@@ -145,7 +145,7 @@ export default function Works() {
             modules={[Navigation, Grid]}
             slidesPerView={3}
             loop={true}
-            spaceBetween={10}
+            spaceBetween={0}
             onSlideChange={(swiper) => {
 
               handleSlideChange(swiper);

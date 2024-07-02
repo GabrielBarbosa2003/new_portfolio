@@ -17,7 +17,7 @@
     height: 50%;
     display: flex;
     align-items: center;
-    z-index: 2;
+    border: 2px blue solid;
 
   }
   .title {
@@ -27,6 +27,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 2px purple solid;
+
 
   }
   .title_active {
@@ -36,13 +38,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    z-index: 4;
 
   }
   .title_active h1{
     text-align: center;
     font-size: 28px;
     font-weight: 400;
-    color: white;
+    color: #fff;
+    opacity: 1;
 
   }
   
@@ -58,15 +63,18 @@
     color: #fff;
   }
   .slide-images {
-    width: 550px;
+    width: 100%;
+    max-width: 550px;
     height: 500px;
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 47%;
     transform: translate(-50%, -50%);
     pointer-events: all;
     opacity: 0.5;
-    z-index: 2;
+    z-index: 1;
+    border: 2px red solid;
+
   }
 
   .img-top {
