@@ -47,8 +47,8 @@ export default function Works() {
     4: img5,
     5: img6,
     6: img7,
-    7: img8
-
+    7: img8,
+    8: img8
   }
 
   const [refTop, setRefTop] = useState(null)
@@ -56,7 +56,9 @@ export default function Works() {
 
   const imgRefTop = useRef(0);
   const imgRefBot = useRef(0);
-  console.log(imgRefTop.current)
+  console.log('Slide: ',currentSlideId)
+  console.log('imageWorks: ',imageWorks[currentSlideId])
+
 
 
   const updateImages = (imageNumber) => {
@@ -92,7 +94,6 @@ export default function Works() {
 
 
 
-    console.log(imgRefTop.current)
 
     // imgRefTop.current.appendChild(imgTop);
     // imgBottom.current.appendChild(imgBottom);
