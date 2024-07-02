@@ -4,6 +4,11 @@ import './works.css'
 import img1 from '../../assets/img/works/img1.jpg'
 import img2 from '../../assets/img/works/img2.jpg'
 import img3 from '../../assets/img/works/img3.jpg'
+import img4 from '../../assets/img/works/img4.jpg'
+import img5 from '../../assets/img/works/img5.jpg'
+import img6 from '../../assets/img/works/img6.jpg'
+import img7 from '../../assets/img/works/img7.jpg'
+import img8 from '../../assets/img/works/img8.jpg'
 import gsap from 'gsap';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -22,8 +27,7 @@ export default function Works() {
     { title: "Arcadian Complex", id: 5 },
     { title: "Shadowline Spire", id: 6 },
     { title: "Echo Nexus Habitat", id: 7 },
-    { title: "Cascade Enclave", id: 8 },
-    { title: "Echo Nexus Habitat", id: 9 }
+    { title: "Cascade Enclave", id: 8 }
   ]
 
   const [currentSlideId, setCurrentSlideId] = useState(0);
@@ -39,9 +43,11 @@ export default function Works() {
     0: img1,
     1: img2,
     2: img3,
-    3: img1,
-    4: img2,
-    5: img3,
+    3: img4,
+    4: img5,
+    5: img6,
+    6: img7,
+    7: img8
 
   }
 
@@ -50,62 +56,63 @@ export default function Works() {
 
   const imgRefTop = useRef(0);
   const imgRefBot = useRef(0);
-  
 
 
-  useEffect(() => {
-      const imgSrc = imageWorks[currentSlideId]
-      const imgTop = document.createElement("img");
-      const imgBottom = document.createElement("img");
-  
-  
-      // imgRefTop.current.src = imageWorks[imageNumber];
-      // imgRefBot.current.src = imageWorks[imageNumber];
-      imgTop.src = imgSrc;
-      imgBottom.src = imgSrc;
-  
-  
-  
-  
-  
-  
-      imgTop.style.clipPath = "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)";
-      imgBottom.style.clipPath = "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)";
-      imgTop.style.transform = "scale(2)";
-      imgBottom.style.transform = "scale(2)";
+  const updateImages = (imageNumber) => {
 
-      if(imgRefTop.current){
-        imgRefTop.current.innerHTML = '';
-        imgRefBot.current.innerHTML = '';
+    const imgSrc = imageWorks[currentSlideId]
+    const imgTop = document.createElement("img");
+    const imgBottom = document.createElement("img");
 
-      }
-  
-  
-      document.querySelector(".img-top").appendChild(imgTop);
-      document.querySelector(".img-bottom").appendChild(imgBottom);
-  
-      console.log(imgRefTop.current)
-  
-      // imgRefTop.current.appendChild(imgTop);
-      // imgBottom.current.appendChild(imgBottom);
-  
-      setRefTop(imgTop);
-      setRefBot(imgBottom);
-  
-  
-      gsap.to([imgTop, imgBottom], {
-        clipPath: "polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%)",
-        transform: "scale(1)",
-        duration: 2,
-        ease: "power4.out",
-        stagger: 0.15,
-        //onComplete: trimExcessImages,
-      });
-    
 
-  },[currentSlideId])
+    // imgRefTop.current.src = imageWorks[imageNumber];
+    // imgRefBot.current.src = imageWorks[imageNumber];
+    imgTop.src = imgSrc;
+    imgBottom.src = imgSrc;
 
-  
+
+
+
+
+
+    imgTop.style.clipPath = "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)";
+    imgBottom.style.clipPath = "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)";
+    imgTop.style.transform = "scale(2)";
+    imgBottom.style.transform = "scale(2)";
+
+    if (imgRefTop.current) {
+      imgRefTop.current.innerHTML = '';
+      imgRefBot.current.innerHTML = '';
+
+    }
+
+
+    document.querySelector(".img-top").appendChild(imgTop);
+    document.querySelector(".img-bottom").appendChild(imgBottom);
+
+    console.log(imgRefTop.current)
+
+    // imgRefTop.current.appendChild(imgTop);
+    // imgBottom.current.appendChild(imgBottom);
+
+    setRefTop(imgTop);
+    setRefBot(imgBottom);
+
+
+    gsap.to([imgTop, imgBottom], {
+      clipPath: "polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%)",
+      transform: "scale(1)",
+      duration: 2,
+      ease: "power4.out",
+      stagger: 0.15,
+      //onComplete: trimExcessImages,
+    });
+
+  }
+
+
+
+
 
 
 
@@ -140,16 +147,16 @@ export default function Works() {
             loop={true}
             spaceBetween={10}
             onSlideChange={(swiper) => {
-              
+
               handleSlideChange(swiper);
-              //updateImages(currentSlideId)
+              updateImages(currentSlideId)
             }}
           >
 
             {titulos.map((titulo, index) => (
               <SwiperSlide key={titulo.id} data-id={titulo.id}>
                 <div className={index == currentSlideId ? "title_active" : "title"} >
-                  <h1>{titulo.id}</h1>
+                  <h1>{titulo.title}</h1>
                 </div>
               </SwiperSlide>
 
@@ -163,11 +170,11 @@ export default function Works() {
 
         <div className='slide-images'>
           <div className='img-top' ref={imgRefTop} >
-            
+
           </div>
 
           <div className='img-bottom' ref={imgRefBot}>
-            
+
           </div>
 
         </div>
