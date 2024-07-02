@@ -56,6 +56,7 @@ export default function Works() {
 
   const imgRefTop = useRef(0);
   const imgRefBot = useRef(0);
+  console.log(imgRefTop.current)
 
 
   const updateImages = (imageNumber) => {
@@ -81,14 +82,15 @@ export default function Works() {
     imgBottom.style.transform = "scale(2)";
 
     if (imgRefTop.current) {
-      imgRefTop.current.innerHTML = '';
-      imgRefBot.current.innerHTML = '';
+      
+
 
     }
-
-
     document.querySelector(".img-top").appendChild(imgTop);
     document.querySelector(".img-bottom").appendChild(imgBottom);
+
+
+
 
     console.log(imgRefTop.current)
 
@@ -105,8 +107,11 @@ export default function Works() {
       duration: 2,
       ease: "power4.out",
       stagger: 0.15,
-      //onComplete: trimExcessImages,
+      onComplete: trimExcessImages,
     });
+
+
+
 
   }
 

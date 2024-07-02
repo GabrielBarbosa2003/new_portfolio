@@ -5,6 +5,12 @@
     align-items: center;
     justify-content: center;
 }
+img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .slider{
     width: 100vw;
     height: 100vh;
@@ -17,7 +23,6 @@
     height: 50%;
     display: flex;
     align-items: center;
-    border: 2px blue solid;
 
   }
   .title {
@@ -27,7 +32,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px purple solid;
 
 
   }
@@ -73,7 +77,6 @@
     pointer-events: all;
     opacity: 0.5;
     z-index: 1;
-    border: 2px red solid;
 
   }
 
