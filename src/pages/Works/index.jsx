@@ -15,7 +15,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/grid';
-import { Navigation, Grid } from 'swiper/modules'
+import 'swiper/css/scrollbar';
+import 'swiper/css/mousewheel'
+import { Navigation, Grid, Scrollbar, Mousewheel  } from 'swiper/modules'
 
 export default function Works() {
 
@@ -148,9 +150,10 @@ export default function Works() {
         <div className='slide-titles'>
           <Swiper
             navigation={false}
-            modules={[Navigation, Grid]}
+            modules={[Navigation, Grid, Scrollbar, Mousewheel]}
             slidesPerView={3}
             loop={true}
+            mousewheel
             spaceBetween={0}
             onSlideChange={(swiper) => {
 
