@@ -17,7 +17,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/grid';
 import 'swiper/css/scrollbar';
 import 'swiper/css/mousewheel'
-import { Navigation, Grid, Scrollbar, Mousewheel  } from 'swiper/modules'
+import { Navigation, Grid, Scrollbar, Mousewheel } from 'swiper/modules'
 
 export default function Works() {
 
@@ -58,8 +58,8 @@ export default function Works() {
 
   const imgRefTop = useRef(0);
   const imgRefBot = useRef(0);
-  console.log('Slide: ',currentSlideId)
-  console.log('imageWorks: ',imageWorks[currentSlideId])
+  console.log('Slide: ', currentSlideId)
+  console.log('imageWorks: ', imageWorks[currentSlideId])
 
 
 
@@ -86,7 +86,7 @@ export default function Works() {
     imgBottom.style.transform = "scale(2)";
 
     if (imgRefTop.current) {
-      
+
 
 
     }
@@ -164,12 +164,13 @@ export default function Works() {
 
             {titulos.map((titulo, index) => (
               <SwiperSlide key={titulo.id} data-id={titulo.id}>
-                <div className={index == currentSlideId ? "title_active" : "title"} >
-                  <h1>{titulo.title}</h1>
+                <div className={index == currentSlideId ? "title active" : "title"} >
+                  <div className='texto'>
+                    <h1>{titulo.title}</h1>
+                  </div>
+                  
                 </div>
               </SwiperSlide>
-
-
 
             ))}
 
@@ -177,7 +178,9 @@ export default function Works() {
 
         </div>
 
-        <div className='slide-images'>
+      
+      </div>
+      <div className='slide-images'>
           <div className='img-top' ref={imgRefTop} >
 
           </div>
@@ -188,7 +191,6 @@ export default function Works() {
 
         </div>
 
-      </div>
 
 
     </div>
