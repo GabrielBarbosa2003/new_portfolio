@@ -20,7 +20,7 @@ html, body{
   background-color: var(--color-bg);
   color: #fff;
   font-family: "Wremena";
-  overflow: hidden;
+  /* overflow: hidden; */
 
 }
 
