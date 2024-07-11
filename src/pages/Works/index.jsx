@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import './works.css'
 
 import img1 from '../../assets/img/works/img1.jpg'
-import img2 from '../../assets/img/works/img2.jpg'
-import img3 from '../../assets/img/works/img3.jpg'
+import img2 from '../../assets/img/works/pills_1.png'
+import img3 from '../../assets/img/works/cotton_1.png'
 import img4 from '../../assets/img/works/img4.jpg'
 import img5 from '../../assets/img/works/img5.jpg'
 import img6 from '../../assets/img/works/img6.jpg'
@@ -23,49 +23,55 @@ export default function Works() {
 
   const titulos = [
     { title: "Arcadian Complex", id: 1 },
-    { title: "Shadowline Spire", id: 2 },
-    { title: "Echo Nexus Habitat", id: 3 },
+    { title: "PILLS", id: 2, link: "https://land-pills.vercel.app/" },
+    { title: "COTTON FILMS", id: 3, link: "https://cotton-films.vercel.app/" },
     { title: "Cascade Enclave", id: 4 },
-    { title: "Arcadian Complex", id: 5 },
-    { title: "Shadowline Spire", id: 6 },
-    { title: "Echo Nexus Habitat", id: 7 },
-    { title: "Cascade Enclave", id: 8 }
+    { title: "Arcadian Complex", id: 5 }
+   
   ]
 
-  const [currentSlideId, setCurrentSlideId] = useState(0);
+  
+
+  
+
+  const imageWorks = {
+    1: img2,
+    2: img3,
+    3: img3,
+    4: img4,
+    5: img5,
+  }
+
+  const [refTop, setRefTop] = useState(null);
+  const [refBot, setRefBot] = useState(null);
+
+  const imgRefTop = useRef(0);
+  const imgRefBot = useRef(0);
+  
+
+
+  const [currentSlideId, setCurrentSlideId] = useState();
 
   const handleSlideChange = (swiper) => {
     const currentIndex = swiper.activeIndex;
     const currentSlide = swiper.slides[currentIndex];
     const currentId = currentSlide.getAttribute('data-id');
+    
+
     setCurrentSlideId(currentId);
+    console.log('currentID',currentSlideId)
+
+    
+    updateImages(currentId);
+
+
   };
 
-  const imageWorks = {
-    0: img1,
-    1: img2,
-    2: img3,
-    3: img4,
-    4: img5,
-    5: img6,
-    6: img7,
-    7: img8,
-    8: img8
-  }
-
-  const [refTop, setRefTop] = useState(null)
-  const [refBot, setRefBot] = useState(null)
-
-  const imgRefTop = useRef(0);
-  const imgRefBot = useRef(0);
-  console.log('Slide: ', currentSlideId)
-  console.log('imageWorks: ', imageWorks[currentSlideId])
-
-
-
   const updateImages = (imageNumber) => {
+    console.log('func: ',imageNumber)
 
-    const imgSrc = imageWorks[currentSlideId]
+    const imgSrc = imageWorks[imageNumber]
+
     const imgTop = document.createElement("img");
     const imgBottom = document.createElement("img");
 
@@ -85,11 +91,6 @@ export default function Works() {
     imgTop.style.transform = "scale(2)";
     imgBottom.style.transform = "scale(2)";
 
-    if (imgRefTop.current) {
-
-
-
-    }
     document.querySelector(".img-top").appendChild(imgTop);
     document.querySelector(".img-bottom").appendChild(imgBottom);
 
@@ -110,7 +111,7 @@ export default function Works() {
       duration: 2,
       ease: "power4.out",
       stagger: 0.15,
-      onComplete: trimExcessImages,
+      //onComplete: trimExcessImages,
     });
 
 
@@ -156,9 +157,8 @@ export default function Works() {
             mousewheel
             spaceBetween={0}
             onSlideChange={(swiper) => {
-
               handleSlideChange(swiper);
-              updateImages(currentSlideId)
+
             }}
           >
 
@@ -166,7 +166,8 @@ export default function Works() {
               <SwiperSlide key={titulo.id} data-id={titulo.id}>
                 <div className={index == currentSlideId ? "title active" : "title"} >
                   <div className='texto'>
-                    <h1>{titulo.title}</h1>
+                  <a href={titulo.link} target="_blank"><h1>{titulo.title}</h1></a>
+                    
                   </div>
                   
                 </div>
