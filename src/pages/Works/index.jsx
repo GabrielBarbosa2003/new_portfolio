@@ -4,7 +4,7 @@ import './works.css'
 import img1 from '../../assets/img/works/img1.jpg'
 import img2 from '../../assets/img/works/pills_1.png'
 import img3 from '../../assets/img/works/cotton_1.png'
-import img4 from '../../assets/img/works/img4.jpg'
+import img4 from '../../assets/img/works/galery.png'
 import img5 from '../../assets/img/works/img5.jpg'
 import img6 from '../../assets/img/works/img6.jpg'
 import img7 from '../../assets/img/works/img7.jpg'
@@ -25,21 +25,19 @@ export default function Works() {
     { title: "Arcadian Complex", id: 1 },
     { title: "PILLS", id: 2, link: "https://land-pills.vercel.app/" },
     { title: "COTTON FILMS", id: 3, link: "https://cotton-films.vercel.app/" },
-    { title: "Cascade Enclave", id: 4 },
-    { title: "Arcadian Complex", id: 5 }
-   
+    { title: "GALERY", id: 4, link: "https://gallery-3d-one.vercel.app/" },
+
   ]
 
-  
 
-  
+
+
 
   const imageWorks = {
     1: img2,
     2: img3,
-    3: img3,
-    4: img4,
-    5: img5,
+    3: img4,
+   
   }
 
   const [refTop, setRefTop] = useState(null);
@@ -47,7 +45,8 @@ export default function Works() {
 
   const imgRefTop = useRef(0);
   const imgRefBot = useRef(0);
-  
+  console.log(imgRefTop.current)
+
 
 
   const [currentSlideId, setCurrentSlideId] = useState();
@@ -56,19 +55,17 @@ export default function Works() {
     const currentIndex = swiper.activeIndex;
     const currentSlide = swiper.slides[currentIndex];
     const currentId = currentSlide.getAttribute('data-id');
-    
+
 
     setCurrentSlideId(currentId);
-    console.log('currentID',currentSlideId)
 
-    
+
     updateImages(currentId);
 
 
   };
 
   const updateImages = (imageNumber) => {
-    console.log('func: ',imageNumber)
 
     const imgSrc = imageWorks[imageNumber]
 
@@ -80,6 +77,7 @@ export default function Works() {
     // imgRefBot.current.src = imageWorks[imageNumber];
     imgTop.src = imgSrc;
     imgBottom.src = imgSrc;
+    //console.log(imgTop)
 
 
 
@@ -166,10 +164,10 @@ export default function Works() {
               <SwiperSlide key={titulo.id} data-id={titulo.id}>
                 <div className={index == currentSlideId ? "title active" : "title"} >
                   <div className='texto'>
-                  <a href={titulo.link} target="_blank"><h1>{titulo.title}</h1></a>
-                    
+                    <a href={titulo.link} target="_blank"><h1>{titulo.title}</h1></a>
+
                   </div>
-                  
+
                 </div>
               </SwiperSlide>
 
@@ -179,18 +177,18 @@ export default function Works() {
 
         </div>
 
-      
+
       </div>
       <div className='slide-images'>
-          <div className='img-top' ref={imgRefTop} >
-
-          </div>
-
-          <div className='img-bottom' ref={imgRefBot}>
-
-          </div>
+        <div className='img-top' ref={imgRefTop} >
 
         </div>
+
+        <div className='img-bottom' ref={imgRefBot}>
+
+        </div>
+
+      </div>
 
 
 
